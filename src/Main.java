@@ -1,5 +1,3 @@
-package com.as.geompaint;
-
 public class Main {
 
 	public static void main(String[] args) {
