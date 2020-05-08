@@ -1,4 +1,4 @@
-package com.as.geompaint.model;
+package model;
 
 public abstract class UnPolygone extends FigureGeom {
 

@@ -1,5 +1,4 @@
-package com.as.geompaint.model;
-
+package model;
 public class UnTriangle extends UnPolygone {
 
 }

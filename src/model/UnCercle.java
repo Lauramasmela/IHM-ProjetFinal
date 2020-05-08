@@ -1,4 +1,4 @@
-package com.as.geompaint.model;
+package model;
 
 public class UnCercle extends FigureGeom {
 
