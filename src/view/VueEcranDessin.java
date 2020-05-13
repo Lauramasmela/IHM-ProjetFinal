@@ -20,7 +20,7 @@ public class VueEcranDessin extends JPanel implements Observer {
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		figure.dessinerFigure();
+		figure.dessinerFigure(g);
 	}
 }
 

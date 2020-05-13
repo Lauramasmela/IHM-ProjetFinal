@@ -1,5 +1,9 @@
 package test;
 
+import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import java.awt.Color;
 import java.awt.Point;
 

@@ -6,6 +6,8 @@ import java.awt.Point;
 
 public class Cercle extends FigureGeom {
 	
+	private int rayon;
+	
 	public Cercle(PointFigure[] points, Color color, int nbPointSaisie) {
 		super(points, color, nbPointSaisie);
 	}
@@ -39,28 +41,18 @@ public class Cercle extends FigureGeom {
 		return Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1));
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void dessinerFigure(Graphics g) {
-		
 		PointFigure[] points = this.getPoints();
-		int[] pointX = new int[points.length];
-		int[] pointY = new int[points.length];
-		for (int i = 0; i < points.length; i++){
-			pointX[i] = points[i].x;
-			pointY[i] = points[i].y;
-		}
-
-		if (this.getPlein()){
+		Point centre = points[0];
+		this.rayon = (int)this.calculateDistanceBetweenPoints(centre.getX(), centre.getY(), points[1].getX(), points[1].getY());
+		if (this.getPlein()) {
 			g.setColor(this.getCouleur());
-			g.fillPolygon(pointX, pointY, points.length);
+			g.fillOval(centre.x-rayon, centre.y-rayon, rayon*2, rayon*2);
 		}
-		
 		g.setColor(this.getCouleurContour());
-		if (points.length > 2)
-			g.drawPolygon(pointX, pointY, points.length);
-		else
-			g.drawPolyline(pointX, pointY, points.length);
-		
+		g.drawOval(centre.x-rayon, centre.y-rayon, rayon*2, rayon*2);
 
 		setChanged();
 		notifyObservers();
