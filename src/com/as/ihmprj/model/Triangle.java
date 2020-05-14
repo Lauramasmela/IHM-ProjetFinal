@@ -1,5 +1,14 @@
-package model;
+package com.as.ihmprj.model;
 import java.awt.*;
+
+/**
+ * 
+ * Classe Triangle: modelise un triangle
+ * 
+ * @author asjoscht
+ * @author lsmasmelacastano
+ *  
+ */
 
 public class Triangle extends Polygone {
 
