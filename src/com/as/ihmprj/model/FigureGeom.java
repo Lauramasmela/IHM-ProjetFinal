@@ -36,26 +36,26 @@ public abstract class FigureGeom{
 		this.nbPointSaisie = nbPointSaisie;
 		notifyAllObservers();
 	}
-	
+
 	public abstract boolean estSurLeContour(Point point);
 	public abstract double calculateDistanceBetweenPoints(double x1, double y1, double x2, double y2);
-	
-	
+
+
 	public void attach(VueEcranDessin observer){
-        observers.add(observer);
-        notifyAllObservers();
-    }
-	
+		observers.add(observer);
+		notifyAllObservers();
+	}
+
 	public void notifyAllObservers(){
-        for (VueEcranDessin observer : observers) {
-            observer.update();
-        }
-    }
+		for (VueEcranDessin observer : observers) {
+			observer.update();
+		}
+	}
 
 	public PointFigure[] getPoints() {
 		return points;
 	}
-	
+
 	public void setPoint(PointFigure pt, int pos) {
 		this.points[pos] = pt;
 		notifyAllObservers();
@@ -94,17 +94,17 @@ public abstract class FigureGeom{
 	public Color getCouleur(){
 		return this.couleur; 
 	}
-	
-	
+
+
 	public boolean getPlein() {
 		return this.plein;
 	}
-	
+
 	public void setPlein(boolean p) {
 		this.plein=p;
 		notifyAllObservers();
 	}
-	
+
 	public void invertPlein() {
 		this.plein=!this.plein;
 		notifyAllObservers();

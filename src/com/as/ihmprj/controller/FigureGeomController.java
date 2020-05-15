@@ -16,100 +16,100 @@ import java.util.Map;
  */
 
 public class FigureGeomController {
-	
-    private static final int DEPLACEMENT= 20;
+
+	private static final int DEPLACEMENT= 20;
 
 
-    //pointClick = coordonnees du point quand on clique
-    public void getSelectedByMouseCoordinates(Point pointClick, Map<String,FigureGeom> figureGeoms){
-        for(FigureGeom figureGeom:figureGeoms.values()){ 
-            if(figureGeom.estSurLeContour(pointClick)){
-                figureGeom.setSelected(true);
-            }else {
-                figureGeom.setSelected(false);
-            }
-        }
-    }
+	//pointClick = coordonnees du point quand on clique
+	public void getSelectedByMouseCoordinates(Point pointClick, Map<String,FigureGeom> figureGeoms){
+		for(FigureGeom figureGeom:figureGeoms.values()){ 
+			if(figureGeom.estSurLeContour(pointClick)){
+				figureGeom.setSelected(true);
+			}else {
+				figureGeom.setSelected(false);
+			}
+		}
+	}
 
-    public Triangle createTriangle(PointFigure[] points, Color color) throws FunctionalException{
-        if(points.length == Triangle.getNbPointsSaisie() && points.length==countPointsSaisie(points)){
-            return new Triangle(points,color);
-        }else{
-            throw new FunctionalException("Le nombre de points requis pour contruire un " + Triangle.class.getName() + " est de " + Triangle.getNbPointsSaisie()
-            +"\\nTous les points doivent etre point de saisie dans un  "+ Triangle.class.getName() + ".");
-        }
-    }
+	public Triangle createTriangle(PointFigure[] points, Color color) throws FunctionalException{
+		if(points.length == Triangle.getNbPointsSaisie() && points.length==countPointsSaisie(points)){
+			return new Triangle(points,color);
+		}else{
+			throw new FunctionalException("Le nombre de points requis pour contruire un " + Triangle.class.getName() + " est de " + Triangle.getNbPointsSaisie()
+			+"\\nTous les points doivent etre point de saisie dans un  "+ Triangle.class.getName() + ".");
+		}
+	}
 
-    public Rectangle createRectangle(PointFigure[] points, Color color) throws FunctionalException {
-    	int compteur = countPointsSaisie(points);
-        if(points.length == Rectangle.getNbPointsTotal() && Rectangle.getNbPointsSaisie()==compteur){
-            return new Rectangle(points,color);
-        }else{
-            throw new FunctionalException("Le nombre de points requis pour contruire un " 
-            		+ Rectangle.class.getName() + " est de " + Rectangle.getNbPointsTotal() + " dont "
-            		+ Rectangle.getNbPointsSaisie()+" points de saisie");
-        }
-    }
+	public Rectangle createRectangle(PointFigure[] points, Color color) throws FunctionalException {
+		int compteur = countPointsSaisie(points);
+		if(points.length == Rectangle.getNbPointsTotal() && Rectangle.getNbPointsSaisie()==compteur){
+			return new Rectangle(points,color);
+		}else{
+			throw new FunctionalException("Le nombre de points requis pour contruire un " 
+					+ Rectangle.class.getName() + " est de " + Rectangle.getNbPointsTotal() + " dont "
+					+ Rectangle.getNbPointsSaisie()+" points de saisie");
+		}
+	}
 
-    public Polygone createPolygone(PointFigure[] points, Color color) throws FunctionalException{
-    	if(points.length==countPointsSaisie(points)) {
-    		return new Polygone(points,color);
-    		
-    	}else {
-    		throw new FunctionalException("Tous les points doivent etre point de saisie dans un  "+Polygone.class.getName() + ".");
-    	}
-        
-    }
-    
-    public Cercle createCercle(PointFigure[] points, Color color) throws FunctionalException {
-    	if(points.length==countPointsSaisie(points)) {
-    		return new Cercle(points,color);
-    		
-    	}else {
-    		throw new FunctionalException("Tous les points doivent etre point de saisie dans un  "+Cercle.class.getName() + ".");
-    	}	  	
-    }
+	public Polygone createPolygone(PointFigure[] points, Color color) throws FunctionalException{
+		if(points.length==countPointsSaisie(points)) {
+			return new Polygone(points,color);
+
+		}else {
+			throw new FunctionalException("Tous les points doivent etre point de saisie dans un  "+Polygone.class.getName() + ".");
+		}
+
+	}
+
+	public Cercle createCercle(PointFigure[] points, Color color) throws FunctionalException {
+		if(points.length==countPointsSaisie(points)) {
+			return new Cercle(points,color);
+
+		}else {
+			throw new FunctionalException("Tous les points doivent etre point de saisie dans un  "+Cercle.class.getName() + ".");
+		}	  	
+	}
 
 	private int countPointsSaisie(PointFigure[] points) {
 		int compteur = 0;
-    	for(PointFigure pointFigure: points) {
-    		if(pointFigure.isPointSaisie()) {
-    			compteur++;
-    		}
-    	}
+		for(PointFigure pointFigure: points) {
+			if(pointFigure.isPointSaisie()) {
+				compteur++;
+			}
+		}
 		return compteur;
 	}
-    
 
-    
-    public FigureGeom deleteFigureGeom(FigureGeom f){
-        f.setPoints(null);
-        return f;
-    }
 
-    public Triangle deleteTriangle(Triangle triangle){
-        triangle.setPoints(null);
-        return triangle;
-    }
 
-    public Polygone deletePolygone(Polygone polygone){
-        polygone.setPoints(null);
-        return polygone;
-    }
+	public FigureGeom deleteFigureGeom(FigureGeom f){
+		f.setPoints(null);
+		return f;
+	}
 
-    public Rectangle deleteRectangle(Rectangle rectangle){
-        rectangle.setPoints(null);
-        return rectangle;
-    }
-    
-    public Cercle deleteCercle(Cercle cercle){
-        cercle.setPoints(null);
-        return cercle;
-    }
-    
-    
-    
-    public PointFigure[] getPointsTriangleParDefaut() {
+	public Triangle deleteTriangle(Triangle triangle){
+		triangle.setPoints(null);
+		return triangle;
+	}
+
+	public Polygone deletePolygone(Polygone polygone){
+		polygone.setPoints(null);
+		return polygone;
+	}
+
+	public Rectangle deleteRectangle(Rectangle rectangle){
+		rectangle.setPoints(null);
+		return rectangle;
+	}
+
+	public Cercle deleteCercle(Cercle cercle){
+		cercle.setPoints(null);
+		return cercle;
+	}
+
+
+
+	public PointFigure[] getPointsTriangleParDefaut() {
 		PointFigure p1 = new PointFigure(20, 20, true);
 		PointFigure p2 = new PointFigure(150, 300, true);
 		PointFigure p3 = new PointFigure(400, 50, true);
@@ -124,7 +124,7 @@ public class FigureGeomController {
 		PointFigure p5 = new PointFigure(600, 100, true);
 		return  new PointFigure[]{p1, p2, p3, p4, p5};
 	}
-	
+
 	public PointFigure[] getPointsRectangleParDefaut() {
 		PointFigure p1 = new PointFigure(100, 150, true);
 		PointFigure p2 = new PointFigure(300, 150, false);
@@ -132,13 +132,13 @@ public class FigureGeomController {
 		PointFigure p4 = new PointFigure(100, 200, false);
 		return  new PointFigure[]{p1, p2, p3, p4};
 	}
-	
+
 	public PointFigure[] getPointsCercleParDefaut() {
 		PointFigure p1 = new PointFigure(200, 200, true);
 		PointFigure p2 = new PointFigure(200+200, 200, true);
 		return  new PointFigure[]{p1, p2};
 	}
-	
+
 	public PointFigure[] dupliquerTriangle(FigureGeom figureGeom) {
 		PointFigure[] pfduplic = new PointFigure[3];
 		if(figureGeom.getPoints()!=null) {
@@ -157,7 +157,7 @@ public class FigureGeomController {
 		}
 		return pfduplic;
 	}
-	
+
 	public PointFigure[] dupliquerCercle(FigureGeom figureGeom) {
 		PointFigure[] pfduplic = new PointFigure[2];
 		if(figureGeom.getPoints()!=null) {
@@ -171,9 +171,9 @@ public class FigureGeomController {
 			pfduplic[1]=pf2;
 		}
 		return pfduplic;
-		
+
 	}
-	
+
 	public PointFigure[] dupliquerRectangle(FigureGeom figureGeom) {
 		PointFigure[] pfduplic = new PointFigure[4];
 		if(figureGeom.getPoints()!=null) {
@@ -196,7 +196,7 @@ public class FigureGeomController {
 		}
 		return pfduplic;
 	}
-	
+
 	public PointFigure[] dupliquerPolygone(FigureGeom figureGeom) {
 		PointFigure[] pfduplic = new PointFigure[5];
 		if(figureGeom.getPoints()!=null) {
